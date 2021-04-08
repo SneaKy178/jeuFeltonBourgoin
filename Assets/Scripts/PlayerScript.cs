@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     private float movementSpeed = 5f;
     public bool isGrounded = false;
     private void Update()
@@ -16,12 +17,19 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded == true) 
+        if (Input.GetButtonDown("Jump")) 
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
         }
         
     }
-    
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pieges")
+        {
+            Destroy(player);
+        }
+        
+    }
 }
