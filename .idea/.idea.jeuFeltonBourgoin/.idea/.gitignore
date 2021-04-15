@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/.idea.jeuFeltonBourgoin.iml
+/modules.xml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../../../:\SCHOOL\AL\Sem_8\prog_jeux\TP\TP_final\Workspace\projetFinalUnity\jeuFeltonBourgoin\.idea\.idea.jeuFeltonBourgoin\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
