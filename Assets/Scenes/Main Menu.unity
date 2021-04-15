@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -529,6 +529,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1301356528}
     m_Modifications:
+    - target: {fileID: 294695689849719995, guid: 65be9169a5580c4419661f6b2d8cf786,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.27450982
+      objectReference: {fileID: 0}
     - target: {fileID: 1624519950914891269, guid: 65be9169a5580c4419661f6b2d8cf786,
         type: 3}
       propertyPath: m_Name
@@ -746,6 +751,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1301356528}
     m_Modifications:
+    - target: {fileID: 294695689849719995, guid: 65be9169a5580c4419661f6b2d8cf786,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.27450982
+      objectReference: {fileID: 0}
     - target: {fileID: 1624519950914891269, guid: 65be9169a5580c4419661f6b2d8cf786,
         type: 3}
       propertyPath: m_Name
@@ -928,6 +938,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 294695689849719995, guid: 65be9169a5580c4419661f6b2d8cf786,
         type: 3}
+      propertyPath: m_Color.a
+      value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 294695689849719995, guid: 65be9169a5580c4419661f6b2d8cf786,
+        type: 3}
       propertyPath: m_Color.b
       value: 0.14026344
       objectReference: {fileID: 0}
@@ -950,6 +965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: LEVEL SELECTION
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664303547425611147, guid: 65be9169a5580c4419661f6b2d8cf786,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5906381258975503430, guid: 65be9169a5580c4419661f6b2d8cf786,
         type: 3}
