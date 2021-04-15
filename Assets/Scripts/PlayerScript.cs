@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     private float movementSpeed = 5f;
+    private int jumpCount;
+    [SerializeField] private int maxJumpCount;
+    private float floorYLevel = -1;
     public bool isGrounded = false;
     private void Update()
     {
@@ -18,11 +21,20 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump")) 
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
-        }
+        if (player.transform.position.y < floorYLevel)
+             {
+                 jumpCount = 0;
+             }
         
+        if (jumpCount < maxJumpCount)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
+                jumpCount++;
+            }
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

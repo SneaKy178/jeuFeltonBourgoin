@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class MenuButton : MonoBehaviour
             if (Input.GetAxis("Submit") == 1)
             {
                 animator.SetBool("IsPressed", true);
+                if (thisIndex == 0)
+                {
+                    SceneManager.LoadScene("Scenes/World1");
+                }
             }
             else if(animator.GetBool("IsPressed"))
             {
