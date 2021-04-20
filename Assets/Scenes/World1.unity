@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 203675095}
+  maxJumpCount: 1
   isGrounded: 0
 --- !u!1 &229574314
 GameObject:
