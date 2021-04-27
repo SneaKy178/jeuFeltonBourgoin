@@ -43,6 +43,11 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("World1");
         }
+
+        if (collision.gameObject.tag == "Flag")
+        {
+            SceneManager.LoadScene("World2");
+        }
         
     }
 }
