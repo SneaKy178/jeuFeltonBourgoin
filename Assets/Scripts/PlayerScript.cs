@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     private float movementSpeed = 5f;
     private int jumpCount;
     [SerializeField] private int maxJumpCount;
-    private float floorYLevel = -1;
+    [SerializeField] private float floorYLevel = -1;
     public bool isGrounded = false;
     private void Update()
     {
@@ -39,10 +39,26 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pieges")
+        Scene currentScene = SceneManager.GetActiveScene();
+        String scenename = currentScene.name;
+
+        if (SceneManager.GetActiveScene().name == "World1")
         {
-            SceneManager.LoadScene("World1");
+            if (collision.gameObject.tag == "Pieges")
+            {
+                SceneManager.LoadScene("World1");
+            }
         }
+        
+        if (SceneManager.GetActiveScene().name == "World2")
+        {
+            if (collision.gameObject.tag == "Pieges")
+            {
+                SceneManager.LoadScene("World2");
+            }
+        }
+        
+        
 
         if (collision.gameObject.tag == "Flag")
         {
