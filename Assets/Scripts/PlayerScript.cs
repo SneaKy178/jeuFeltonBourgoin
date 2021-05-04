@@ -11,12 +11,18 @@ public class PlayerScript : MonoBehaviour
     private int jumpCount;
     [SerializeField] private int maxJumpCount;
     [SerializeField] private float floorYLevel = -1;
-    public bool isGrounded = false;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private void Update()
     {
         Jump();
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * movementSpeed;
+        
+        Flip(movement.x);
+
+        float animatorSpeed = Mathf.Abs(movement.x);
+        animator.SetFloat("MovementSpeed",animatorSpeed);
     }
 
     void Jump()
@@ -64,6 +70,16 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("World2");
         }
-        
+    }
+
+    void Flip(float _movement)
+    {
+        if (_movement > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+        } else if (_movement < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }

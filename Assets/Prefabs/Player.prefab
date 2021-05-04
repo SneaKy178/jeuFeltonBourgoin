@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3624736838046269696}
   - component: {fileID: 3624736838046269697}
   - component: {fileID: 3624736838046269701}
+  - component: {fileID: 8549470289469329394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -148,4 +149,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3624736838046269710}
   maxJumpCount: 1
-  isGrounded: 0
+  floorYLevel: -1
+  animator: {fileID: 8549470289469329394}
+  spriteRenderer: {fileID: 3624736838046269699}
+--- !u!95 &8549470289469329394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624736838046269710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eba5d83ef543f0e4da4d5e60efa59670, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
