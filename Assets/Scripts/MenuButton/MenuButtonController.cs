@@ -6,21 +6,36 @@ public class MenuButtonController : MonoBehaviour
 {
     public int index;
     private bool isKeyDown;
+    [SerializeField] private bool useSideKeys;
     [SerializeField] private int maxIndex;
+
+    private string axisUsed;
+
+    private int axisMultiplier;
     // Start is called before the first frame update
     void Start()
     {
+        if (useSideKeys)
+        {
+            axisUsed = "Horizontal";
+            axisMultiplier = -1;
+        }
+        else
+        {
+            axisUsed = "Vertical";
+            axisMultiplier = 1;
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical") != 0)
+        if (Input.GetAxis(axisUsed) != 0)
         {
             if (!isKeyDown)
             {
-                if (Input.GetAxis("Vertical") < 0)
+                if (Input.GetAxis(axisUsed) * axisMultiplier < 0)
                 {
                     if (index < maxIndex)
                     {
@@ -31,7 +46,7 @@ public class MenuButtonController : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (Input.GetAxis("Vertical") > 0)
+                else if (Input.GetAxis(axisUsed) * axisMultiplier > 0)
                 {
                     if (index > 0)
                     {
