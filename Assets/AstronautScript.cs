@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerScript : MonoBehaviour
+public class AstronautScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     private float movementSpeed = 5f;
@@ -77,10 +77,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (_movement > 0.1f)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         } else if (_movement < -0.1f)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
     }
 }
