@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject player;
     private float movementSpeed = 5f;
     private int jumpCount;
+    public bool canJump;
     [SerializeField] private int maxJumpCount;
     [SerializeField] private float floorYLevel = -1;
     [SerializeField] private Animator animator;
@@ -18,26 +19,35 @@ public class PlayerScript : MonoBehaviour
         Jump();
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * movementSpeed;
-        
+
         Flip(movement.x);
 
         float animatorSpeed = Mathf.Abs(movement.x);
         animator.SetFloat("MovementSpeed",animatorSpeed);
+        
     }
 
     void Jump()
     {
-        if (player.transform.position.y < floorYLevel)
-             {
-                 jumpCount = 0;
-             }
+        // if (player.transform.position.y < floorYLevel)
+        //      {
+        //          jumpCount = 0;
+        //          animator.SetBool("Jump", false);
+        //          // Debug.Log("should be false");
+        //          // Debug.Log(animator.GetBool("Jump"));
+        //      }
         
-        if (jumpCount < maxJumpCount)
+        // if (jumpCount < maxJumpCount)
+        if(canJump)
         {
             if (Input.GetButtonDown("Jump"))
             {
+                animator.SetBool("Jump", true);
+                // Debug.Log("should be true");
+                // Debug.Log(animator.GetBool("Jump"));
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
                 jumpCount++;
+                canJump = false;
             }
         }
 
