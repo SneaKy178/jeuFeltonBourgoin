@@ -8,12 +8,17 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     private float movementSpeed = 5f;
-    private int jumpCount;
-    public bool canJump;
-    [SerializeField] private int maxJumpCount;
-    [SerializeField] private float floorYLevel = -1;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Transform rayStart;
+
+    
+
+    private void Start()
+    {
+       
+    }
+
     private void Update()
     {
         Jump();
@@ -29,29 +34,30 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        // if (player.transform.position.y < floorYLevel)
-        //      {
-        //          jumpCount = 0;
-        //          animator.SetBool("Jump", false);
-        //          // Debug.Log("should be false");
-        //          // Debug.Log(animator.GetBool("Jump"));
-        //      }
-        
-        // if (jumpCount < maxJumpCount)
-        if(canJump)
+        if(isOnGround())
         {
             if (Input.GetButtonDown("Jump"))
             {
                 animator.SetBool("Jump", true);
-                // Debug.Log("should be true");
-                // Debug.Log(animator.GetBool("Jump"));
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
-                jumpCount++;
-                canJump = false;
+                
+            }else if (animator.GetBool("Jump"))
+            {
+                animator.SetBool("Jump", false);
             }
         }
 
     }
+    
+    private bool isOnGround()
+    {
+        LayerMask mask = LayerMask.GetMask("Ground");
+        
+        Debug.DrawLine(rayStart.transform.position, new Vector2(rayStart.transform.position.x, rayStart.transform.position.y) + Vector2.down * 0.5f , Color.blue);
+        RaycastHit2D rayCastHit = Physics2D.Raycast(rayStart.transform.position, Vector2.down, .5f, mask);
+        return rayCastHit.collider != null;
+    }
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

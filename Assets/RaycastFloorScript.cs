@@ -15,7 +15,7 @@ public class RaycastFloorScript : MonoBehaviour
 
     
     
-        Debug.DrawRay(transform.position, Vector2.right * 2, Color.green);
+       
         // if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right)))
         // {
         //     
@@ -23,14 +23,16 @@ public class RaycastFloorScript : MonoBehaviour
         //     print("hit");
         // }
 
-        Vector2 vector2 = new Vector2(1, 0) * distance;
-        hit = Physics2D.Raycast(transform.position, Vector2.right, 100f);
-
-        if (hit.collider.gameObject.tag == "Player")
-        {
-            _playerScript.canJump = true;
-            Debug.Log("hit player");
-        }
+        // Vector2 vector2 = new Vector2(1, 0) * distance;
+        // hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+        // Vector2 debugRayEnd = new Vector2(transform.position.x, transform.position.y) + Vector2.right * 1;
+        // Debug.DrawLine(transform.position, debugRayEnd , Color.red);
+        //
+        // if (hit.collider.gameObject.tag == "Player")
+        // {
+        //     _playerScript.canJump = true;
+        //     Debug.Log("hit player");
+        // }
     }
 }
 

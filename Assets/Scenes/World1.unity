@@ -2136,7 +2136,7 @@ GameObject:
   - component: {fileID: 2092926056}
   - component: {fileID: 2092926055}
   - component: {fileID: 2092926057}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Decors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
