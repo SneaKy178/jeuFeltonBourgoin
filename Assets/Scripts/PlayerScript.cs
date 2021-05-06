@@ -11,12 +11,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform rayStart;
+    [SerializeField] private int maxJumps;
+    private int jumpCounter;
+    public Sprite playerSprite;
 
     
 
     private void Start()
     {
-       
+        spriteRenderer.sprite = playerSprite;
     }
 
     private void Update()
@@ -34,16 +37,20 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if(isOnGround())
+        if (isOnGround())
+        {
+            jumpCounter = 0;
+            if (animator.GetBool("Jump"))
+            {
+                animator.SetBool("Jump", false);
+            }
+        }
+        else if(jumpCounter < maxJumps)
         {
             if (Input.GetButtonDown("Jump"))
             {
                 animator.SetBool("Jump", true);
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
-                
-            }else if (animator.GetBool("Jump"))
-            {
-                animator.SetBool("Jump", false);
             }
         }
 
