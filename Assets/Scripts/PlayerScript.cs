@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform rayStart;
     [SerializeField] private int maxJumps;
-    private int jumpCounter;
+    private int jumpCounter = 0;
     public Sprite playerSprite;
 
     
@@ -45,12 +45,13 @@ public class PlayerScript : MonoBehaviour
                 animator.SetBool("Jump", false);
             }
         }
-        else if(jumpCounter < maxJumps)
+        if(Input.GetButtonDown("Jump"))
         {
-            if (Input.GetButtonDown("Jump"))
+            if (jumpCounter < maxJumps)
             {
                 animator.SetBool("Jump", true);
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
+                jumpCounter++;
             }
         }
 
