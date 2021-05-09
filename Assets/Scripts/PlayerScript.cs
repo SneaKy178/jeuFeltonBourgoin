@@ -72,20 +72,20 @@ public class PlayerScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         String scenename = currentScene.name;
 
-        if (SceneManager.GetActiveScene().name == "World1")
+        if (SceneManager.GetActiveScene().name == "World_1")
         {
             if (collision.gameObject.tag == "Pieges")
             {
                
-                SceneManager.LoadScene("World1");
+                SceneManager.LoadScene("World_1");
             }
         }
         
-        if (SceneManager.GetActiveScene().name == "World2")
+        if (SceneManager.GetActiveScene().name == "World_2")
         {
             if (collision.gameObject.tag == "Pieges")
             {
-                SceneManager.LoadScene("World2");
+                SceneManager.LoadScene("World_2");
             }
         }
         
@@ -99,12 +99,30 @@ public class PlayerScript : MonoBehaviour
 
     void Flip(float _movement)
     {
-        if (_movement > 0.1f)
+
+        if (gameObject.name == "Player1")
         {
-            spriteRenderer.flipX = false;
-        } else if (_movement < -0.1f)
-        {
-            spriteRenderer.flipX = true;
+            if (_movement > 0.1f)
+            {
+                spriteRenderer.flipX = false;
+            } else if (_movement < -0.1f)
+            {
+                spriteRenderer.flipX = true;
+            }
         }
+
+        if (gameObject.name == "Player2")
+        {
+            if (_movement > 0.1f)
+            {
+                spriteRenderer.flipX = true;
+            } else if (_movement < -0.1f)
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
+        
+        
+        
     }
 }

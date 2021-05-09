@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.U2D.Path;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemiScript : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
+
+    private float movementSpeed = 4;
     [SerializeField] private Transform[] waypoints;
     
     private Transform target;
     private int pointDestination = 0;
 
     [SerializeField] private SpriteRenderer serpent;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,12 @@ public class EnemiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * (movementSpeed * Time.deltaTime), Space.World);
+        
+
+            Vector3 direction = target.position - transform.position;
+            transform.Translate(direction.normalized * (movementSpeed * Time.deltaTime), Space.World);
+        
+       
 
         if (Vector3.Distance(transform.position, target.position) < 0.3f)
         {
