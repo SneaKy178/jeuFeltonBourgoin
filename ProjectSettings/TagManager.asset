@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pieges
   - Flag
+  - Decor
   layers:
   - Default
   - TransparentFX
