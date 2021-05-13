@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform rayStart;
-    [SerializeField] private int maxJumps;
+    private int maxJumps = 1;
     private int jumpCounter = 0;
     public Sprite playerSprite;
 
@@ -93,7 +93,12 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Flag")
         {
-            SceneManager.LoadScene("World2");
+            SceneManager.LoadScene("World_2");
+        }
+
+        if (collision.gameObject.name == "Door")
+        {
+            SceneManager.LoadScene("CreditScene");
         }
     }
 
