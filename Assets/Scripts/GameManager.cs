@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
         WORLD1,
         WORLD2
     };
+
+    public class WorldSelectionManager : UnityEvent<WorldSelected>{}
+
+    public WorldSelectionManager worldSelectionManager = new WorldSelectionManager();
 
     public static GameManager Instance
     {
