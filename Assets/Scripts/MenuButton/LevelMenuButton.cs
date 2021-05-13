@@ -37,17 +37,7 @@ public class LevelMenuButton : MonoBehaviour
 
                 if (thisIndex == 1)
                 {
-                    SceneManager.LoadScene("Scenes/Menus/Level Selection Menu");
-                }
-
-                if (thisIndex == 2)
-                {
-                    SceneManager.LoadScene("Scenes/Menus/Character Selection Menu");
-                }
-
-                if (thisIndex == 3)
-                {
-                    Application.Quit();
+                    _gameManager.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
                 }
             }
             else if(animator.GetBool("IsPressed"))

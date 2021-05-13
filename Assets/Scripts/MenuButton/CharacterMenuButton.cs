@@ -31,23 +31,17 @@ public class CharacterMenuButton : MonoBehaviour
                 animator.SetBool("IsPressed", true);
                 if (thisIndex == 0)
                 {
-                    _gameManager.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
-                    // SceneManager.LoadScene("Scenes/World1");
+                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.KING);
                 }
 
                 if (thisIndex == 1)
                 {
-                    SceneManager.LoadScene("Scenes/Menus/Level Selection Menu");
+                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.ASTRONAUT);
                 }
 
                 if (thisIndex == 2)
                 {
-                    SceneManager.LoadScene("Scenes/Menus/Character Selection Menu");
-                }
-
-                if (thisIndex == 3)
-                {
-                    Application.Quit();
+                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.WARRIOR);
                 }
             }
             else if(animator.GetBool("IsPressed"))

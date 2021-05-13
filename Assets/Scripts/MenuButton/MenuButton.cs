@@ -32,8 +32,9 @@ public class MenuButton : MonoBehaviour
                 animator.SetBool("IsPressed", true);
                 if (thisIndex == 0)
                 {
-                    _gameManager.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
+                    GameManager.Instance.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
                     // SceneManager.LoadScene("Scenes/World1");
+                    
                 }
 
                 if (thisIndex == 1)

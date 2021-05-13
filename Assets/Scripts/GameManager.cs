@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     public class WorldSelectionManager : UnityEvent<WorldSelected>{}
 
     public WorldSelectionManager worldSelectionManager = new WorldSelectionManager();
+    
+    public class CharacterSelectionManager: UnityEvent<CharacterSelected>{}
+
+    public CharacterSelectionManager characterSelectionManager = new CharacterSelectionManager();
 
     public static GameManager Instance
     {
@@ -38,18 +42,17 @@ public class GameManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<GameManager>();
+                _instance = new GameManager();
             }
-
             return _instance;
         }
     }
 
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    // private void Awake()
+    // {
+    //     DontDestroyOnLoad(gameObject);
+    // }
     
     
 
@@ -62,19 +65,30 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Instance.worldSelectionManager.AddListener(worldSelection);
     }
 
 
-    private void worldSelection()
+    private void worldSelection(WorldSelected worldSelected)
     {
-        if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD1 ))
+        Debug.Log("entered listener");
+        if (worldSelected == WorldSelected.WORLD1)
         {
             SceneManager.LoadScene("World1");
-        }else if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD2))
+            Debug.Log("world1 selected and works");
+        }
+
+        if (worldSelected == WorldSelected.WORLD2)
         {
             SceneManager.LoadScene("world2");
         }
+        // if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD1 ))
+        // {
+        //     SceneManager.LoadScene("World1");
+        // }else if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD2))
+        // {
+        //     SceneManager.LoadScene("world2");
+        // }
     }
 
 
