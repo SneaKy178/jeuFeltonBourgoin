@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
     void Flip(float _movement)
     {
 
-        if (gameObject.name == "Player1")
+        if (gameObject.name == "Player1" || gameObject.name == "Player3" )
         {
             if (_movement > 0.1f)
             {
