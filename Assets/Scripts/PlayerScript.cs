@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform rayStart;
-    [SerializeField] private int maxJumps;
+    private int maxJumps = 1;
     private int jumpCounter = 0;
     [SerializeField] private Sprite kingSprite;
     [SerializeField] private Sprite astronautSprite;
@@ -96,14 +96,19 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Flag")
         {
-            SceneManager.LoadScene("World2");
+            SceneManager.LoadScene("World_2");
+        }
+
+        if (collision.gameObject.name == "Door")
+        {
+            SceneManager.LoadScene("CreditScene");
         }
     }
 
     void Flip(float _movement)
     {
 
-        if (gameObject.name == "Player1")
+        if (gameObject.name == "Player1" || gameObject.name == "Player3" )
         {
             if (_movement > 0.1f)
             {
