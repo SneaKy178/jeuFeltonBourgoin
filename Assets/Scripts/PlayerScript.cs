@@ -13,17 +13,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Transform rayStart;
     private int maxJumps = 1;
     private int jumpCounter = 0;
-    [SerializeField] private Sprite kingSprite;
-    [SerializeField] private Sprite astronautSprite;
-    [SerializeField] private Sprite warriorSprite;
+    
+    
 
     
 
-    private void Start()
-    {
-        // initializePlayer(GameManager.Instance.getCurrentPlayerModel());
-        // spriteRenderer.sprite = GameManager.Instance.getCurrentPlayerModel();
-    }
+    
 
     private void Update()
     {
@@ -108,7 +103,7 @@ public class PlayerScript : MonoBehaviour
     void Flip(float _movement)
     {
 
-        if (gameObject.name == "Player1" || gameObject.name == "Player3" )
+        if (gameObject.name == "Player1(Clone)" )
         {
             if (_movement > 0.1f)
             {
@@ -119,43 +114,18 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if (gameObject.name == "Player2")
+        if (gameObject.name == "Player2(Clone)")
         {
-            if (_movement > 0.1f)
+            if (_movement > -0.1f)
             {
                 spriteRenderer.flipX = true;
-            } else if (_movement < -0.1f)
+            } else if (_movement < 0.1f)
             {
                 spriteRenderer.flipX = false;
             }
         }
     }
 
-
-    // private void initializePlayer(GameManager.CharacterSelected characterSelected)
-    // {
-    //     if (characterSelected == GameManager.CharacterSelected.KING)
-    //     {
-    //         spriteRenderer.sprite = kingSprite;
-    //         // spriteRenderer.size = new Vector2(1, 1);
-    //         Debug.Log("King selected");
-    //         transform.localScale = new Vector2(1, 1);
-    //     }
-    //     if (characterSelected == GameManager.CharacterSelected.ASTRONAUT)
-    //     {
-    //         spriteRenderer.sprite = astronautSprite;
-    //         // spriteRenderer.size = new Vector2(1, 1);
-    //         Debug.Log("Astronaut selected");
-    //         transform.localScale = new Vector2(1, 1);
-    //     }
-    //     if (characterSelected == GameManager.CharacterSelected.WARRIOR)
-    //     {
-    //         spriteRenderer.sprite = warriorSprite;
-    //         // spriteRenderer.size = new Vector2(0.01f, 0.01f);
-    //         Debug.Log("Warrior selected");
-    //
-    //     }
-    //     
-    // }
+    
     
 }

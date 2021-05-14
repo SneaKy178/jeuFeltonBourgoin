@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
     public enum CharacterSelected
     {
         KING,
-        ASTRONAUT,
-        WARRIOR
+        ASTRONAUT
     };
 
     public enum WorldSelected
@@ -62,7 +61,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
 

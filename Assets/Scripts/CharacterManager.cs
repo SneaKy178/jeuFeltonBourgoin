@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,12 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private Transform kingPrefab;
     [SerializeField] private Transform astronautPrefab;
-    [SerializeField] private Transform warriorPrefab;
+    
+    
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         instantiateSelectedCharacter(GameManager.Instance.getCurrentPlayerModel());
-        
     }
 
     // Update is called once per frame
@@ -35,9 +36,5 @@ public class CharacterManager : MonoBehaviour
             Instantiate(astronautPrefab, spawnPoint.position, spawnPoint.rotation);
         }
         
-        if (characterSelected == GameManager.CharacterSelected.WARRIOR)
-        {
-            Instantiate(warriorPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
     }
 }

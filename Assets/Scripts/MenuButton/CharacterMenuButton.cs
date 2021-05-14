@@ -42,12 +42,7 @@ public class CharacterMenuButton : MonoBehaviour
                         GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.ASTRONAUT);
                         SceneManager.LoadScene("Level Selection Menu");
                     }
-
-                    if (thisIndex == 2)
-                    {
-                        GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.WARRIOR);
-                        SceneManager.LoadScene("Level Selection Menu");
-                    }
+                    
 
                     isKeyDown = true;
                 }
