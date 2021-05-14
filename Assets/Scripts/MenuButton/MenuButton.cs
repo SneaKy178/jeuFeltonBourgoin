@@ -13,7 +13,7 @@ public class MenuButton : MonoBehaviour
 
     [SerializeField] private int thisIndex;
 
-    private GameManager _gameManager;
+    private bool isKeyDown;
 
     private void Start()
     {
@@ -29,32 +29,43 @@ public class MenuButton : MonoBehaviour
             animator.SetBool("IsSelected", true);
             if (Input.GetAxis("Submit") == 1)
             {
-                animator.SetBool("IsPressed", true);
-                if (thisIndex == 0)
+                if (!isKeyDown)
                 {
-                    GameManager.Instance.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
-                    // SceneManager.LoadScene("Scenes/World1");
-                    
-                }
 
-                if (thisIndex == 1)
-                {
-                    SceneManager.LoadScene("Scenes/Menus/Level Selection Menu");
-                }
 
-                if (thisIndex == 2)
-                {
-                    SceneManager.LoadScene("Scenes/Menus/Character Selection Menu");
-                }
+                    animator.SetBool("IsPressed", true);
+                    if (thisIndex == 0)
+                    {
+                        GameManager.Instance.worldSelectionManager.Invoke(GameManager.WorldSelected.WORLD1);
 
-                if (thisIndex == 3)
-                {
-                    Application.Quit();
+                    }
+
+                    if (thisIndex == 1)
+                    {
+                        SceneManager.LoadScene("Scenes/Menus/Level Selection Menu");
+                    }
+
+                    if (thisIndex == 2)
+                    {
+                        SceneManager.LoadScene("Scenes/Menus/Character Selection Menu");
+                    }
+
+                    if (thisIndex == 3)
+                    {
+                        Application.Quit();
+                    }
+
+                    isKeyDown = true;
                 }
+                
             }
             else if(animator.GetBool("IsPressed"))
             {
                 animator.SetBool("IsPressed", false);
+            }
+            else 
+            {
+                isKeyDown = false;
             }
         }
         else

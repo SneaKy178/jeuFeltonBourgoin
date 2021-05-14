@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-
-    private PlayerScript _playerScript;
-
-    [SerializeField] private Sprite[] characterSprites;
+    private CharacterSelected currentPlayerModel = CharacterSelected.KING; //Default character model, will be overwrited if different character chosen in character menu
 
     public enum CharacterSelected
     {
@@ -36,36 +33,36 @@ public class GameManager : MonoBehaviour
 
     public CharacterSelectionManager characterSelectionManager = new CharacterSelectionManager();
 
-    public static GameManager Instance
+    public static GameManager Instance { get; private set; }
+
+
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (_instance == null)
-            {
-                _instance = new GameManager();
-            }
-            return _instance;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
-
-
-    // private void Awake()
-    // {
-    //     DontDestroyOnLoad(gameObject);
-    // }
     
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instance.worldSelectionManager.AddListener(worldSelection);
+        Instance.characterSelectionManager.AddListener(selectePlayerModel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Instance.worldSelectionManager.AddListener(worldSelection);
+        
     }
 
 
@@ -74,38 +71,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("entered listener");
         if (worldSelected == WorldSelected.WORLD1)
         {
-            SceneManager.LoadScene("World1");
-            Debug.Log("world1 selected and works");
+            SceneManager.LoadScene("Scenes/World_1");
         }
 
         if (worldSelected == WorldSelected.WORLD2)
         {
-            SceneManager.LoadScene("world2");
+            SceneManager.LoadScene("Scenes/World_2");
         }
-        // if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD1 ))
-        // {
-        //     SceneManager.LoadScene("World1");
-        // }else if (Enum.IsDefined(typeof(WorldSelected), WorldSelected.WORLD2))
-        // {
-        //     SceneManager.LoadScene("world2");
-        // }
     }
-
-
-    private void characterSelection()
+    
+    private void selectePlayerModel(CharacterSelected character)
     {
-        
-        if (Enum.IsDefined(typeof(CharacterSelected), CharacterSelected.KING))
-        {
-            _playerScript.playerSprite = characterSprites[0];
-        }
-        else if (Enum.IsDefined(typeof(CharacterSelected), CharacterSelected.ASTRONAUT))
-        {
-            _playerScript.playerSprite = characterSprites[1];
-        }
-        else if (Enum.IsDefined(typeof(CharacterSelected), CharacterSelected.WARRIOR))
-        {
-            _playerScript.playerSprite = characterSprites[2];
-        }
+        currentPlayerModel = character;
     }
+
+    public CharacterSelected getCurrentPlayerModel()
+    {
+        return currentPlayerModel;
+    }
+    
 }

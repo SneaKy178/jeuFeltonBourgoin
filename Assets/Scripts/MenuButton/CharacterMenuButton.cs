@@ -12,7 +12,7 @@ public class CharacterMenuButton : MonoBehaviour
 
     [SerializeField] private int thisIndex;
 
-    private GameManager _gameManager;
+    private bool isKeyDown;
 
     private void Start()
     {
@@ -28,25 +28,37 @@ public class CharacterMenuButton : MonoBehaviour
             animator.SetBool("IsSelected", true);
             if (Input.GetAxis("Submit") == 1)
             {
-                animator.SetBool("IsPressed", true);
-                if (thisIndex == 0)
+                if (!isKeyDown)
                 {
-                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.KING);
-                }
+                    animator.SetBool("IsPressed", true);
+                    if (thisIndex == 0)
+                    {
+                        GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.KING);
+                        SceneManager.LoadScene("Level Selection Menu");
+                    }
 
-                if (thisIndex == 1)
-                {
-                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.ASTRONAUT);
-                }
+                    if (thisIndex == 1)
+                    {
+                        GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.ASTRONAUT);
+                        SceneManager.LoadScene("Level Selection Menu");
+                    }
 
-                if (thisIndex == 2)
-                {
-                    GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.WARRIOR);
+                    if (thisIndex == 2)
+                    {
+                        GameManager.Instance.characterSelectionManager.Invoke(GameManager.CharacterSelected.WARRIOR);
+                        SceneManager.LoadScene("Level Selection Menu");
+                    }
+
+                    isKeyDown = true;
                 }
             }
             else if(animator.GetBool("IsPressed"))
             {
                 animator.SetBool("IsPressed", false);
+            }
+            else
+            {
+                isKeyDown = false;
             }
         }
         else

@@ -13,13 +13,16 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Transform rayStart;
     [SerializeField] private int maxJumps;
     private int jumpCounter = 0;
-    public Sprite playerSprite;
+    [SerializeField] private Sprite kingSprite;
+    [SerializeField] private Sprite astronautSprite;
+    [SerializeField] private Sprite warriorSprite;
 
     
 
     private void Start()
     {
-        spriteRenderer.sprite = playerSprite;
+        // initializePlayer(GameManager.Instance.getCurrentPlayerModel());
+        // spriteRenderer.sprite = GameManager.Instance.getCurrentPlayerModel();
     }
 
     private void Update()
@@ -49,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (jumpCounter < maxJumps)
             {
-                animator.SetBool("Jump", true);
+                // animator.SetBool("Jump", true);
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
                 jumpCounter++;
             }
@@ -62,7 +65,7 @@ public class PlayerScript : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Ground");
         
         Debug.DrawLine(rayStart.transform.position, new Vector2(rayStart.transform.position.x, rayStart.transform.position.y) + Vector2.down * 0.5f , Color.blue);
-        RaycastHit2D rayCastHit = Physics2D.Raycast(rayStart.transform.position, Vector2.down, .5f, mask);
+        RaycastHit2D rayCastHit = Physics2D.Raycast(rayStart.transform.position, Vector2.down, .01f, mask);
         return rayCastHit.collider != null;
     }
     
@@ -121,8 +124,33 @@ public class PlayerScript : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        
-        
-        
     }
+
+
+    // private void initializePlayer(GameManager.CharacterSelected characterSelected)
+    // {
+    //     if (characterSelected == GameManager.CharacterSelected.KING)
+    //     {
+    //         spriteRenderer.sprite = kingSprite;
+    //         // spriteRenderer.size = new Vector2(1, 1);
+    //         Debug.Log("King selected");
+    //         transform.localScale = new Vector2(1, 1);
+    //     }
+    //     if (characterSelected == GameManager.CharacterSelected.ASTRONAUT)
+    //     {
+    //         spriteRenderer.sprite = astronautSprite;
+    //         // spriteRenderer.size = new Vector2(1, 1);
+    //         Debug.Log("Astronaut selected");
+    //         transform.localScale = new Vector2(1, 1);
+    //     }
+    //     if (characterSelected == GameManager.CharacterSelected.WARRIOR)
+    //     {
+    //         spriteRenderer.sprite = warriorSprite;
+    //         // spriteRenderer.size = new Vector2(0.01f, 0.01f);
+    //         Debug.Log("Warrior selected");
+    //
+    //     }
+    //     
+    // }
+    
 }
